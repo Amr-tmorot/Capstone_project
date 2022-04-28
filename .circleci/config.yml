@@ -134,7 +134,7 @@ jobs:
 #   aws-eks: circleci/aws-eks@1.0.3
 #   kubernetes: circleci/kubernetes@1.0
 
- workflows:
+workflows:
    deployment:
      jobs:
        - lint-code
