@@ -2,7 +2,7 @@ setup:
 	# Create python virtualenv & source it
 	# source ~/.capstone/bin/activate
 	python3 -m venv ~/.capstone
-	source ~/.capstone/bin/activate
+	. ~/.capstone/bin/activate
 
 install:
 	# This should be run from inside a virtualenv
