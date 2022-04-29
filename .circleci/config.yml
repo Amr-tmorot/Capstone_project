@@ -140,7 +140,9 @@ workflows:
    deployment:
      jobs:
        - lint-code
-       - build-docker-image
+       - build-docker-image:
+          requires:
+            - lint-code
 #       - create-cluster:
 #           cluster-name: capstone-project
 #           requires: [build-docker-image]
