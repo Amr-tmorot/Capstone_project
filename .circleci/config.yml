@@ -28,25 +28,30 @@ jobs:
               source ~/.capstone/bin/activate
               make lint 
 
-#   build-docker-image:
-#     docker:
-#       - image: circleci/node:13.8.0
-#     steps:
-#       - checkout
-#       - setup_remote_docker:
-#           version: 19.03.13
-#       - run:
-#           name: Build Docker Image
-#           command: |
-#               docker system prune
-#               docker build -t capstone-project:8654tag .
-#               docker image ls
-#               echo "logging into Docker Hub"
-#               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
-#               echo "Tag image"
-#               docker tag capstone-project:8654tag hazemzein/capstone-project.8654tag
-#               echo "Pushing images to Docker Hub"
-#               docker push hazemzein/capstone-project.8654tag
+  build-docker-image:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: check docker version
+          command: docker --version
+      - setup_remote_docker:
+          version: 19.03.13
+      - run:
+          name: check docker version
+          command: docker --version
+      - run:
+          name: Build Docker Image
+          command: |
+              docker build -t capstone:latest .
+              docker image ls
+      - run:
+          name: Push Docker Image
+          command: |
+              docker login -u $DOCKER_USER -p $DOCKER_PASS 
+              docker tag capstone:latest tmorot/capstone:latest
+              docker push tmorot/capstone:latest
 
 #   create-cluster:
 #     executor: aws-eks/python3
@@ -138,7 +143,7 @@ workflows:
    deployment:
      jobs:
        - lint-code
-#       - build-docker-image
+       - build-docker-image
 #       - create-cluster:
 #           cluster-name: capstone-project
 #           requires: [build-docker-image]
