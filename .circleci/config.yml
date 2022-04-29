@@ -41,14 +41,11 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-              docker build -t capstone:latest .
-              docker image ls
+              ./run_docker.sh
       - run:
           name: Push Docker Image
           command: |
-              docker login -u $DOCKER_USER -p $DOCKER_PASS 
-              docker tag capstone:latest tmorot/capstone:latest
-              docker push tmorot/capstone:latest
+              ./upload_docker.sh
 
 #   create-cluster:
 #     executor: aws-eks/python3

@@ -16,7 +16,7 @@ test:
 
 lint:
 	
-	#./hadolint Dockerfile
+	./hadolint Dockerfile
 	pylint --disable=R,C,W1203,W1202, flask_app/app.py
 
 
