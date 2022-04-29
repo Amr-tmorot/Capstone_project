@@ -41,10 +41,12 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
+              chmod +x ./run_docker.sh
               sudo ./run_docker.sh
       - run:
           name: Push Docker Image
           command: |
+              chmod +x ./upload_docker.sh
               sudo ./upload_docker.sh
 
 #   create-cluster:
