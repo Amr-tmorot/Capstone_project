@@ -33,9 +33,6 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run:
-          name: check docker version
-          command: docker --version
       - setup_remote_docker:
           version: 19.03.13
       - run:
