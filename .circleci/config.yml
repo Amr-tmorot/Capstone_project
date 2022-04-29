@@ -41,11 +41,11 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-              ./run_docker.sh
+              sudo ./run_docker.sh
       - run:
           name: Push Docker Image
           command: |
-              ./upload_docker.sh
+              sudo ./upload_docker.sh
 
 #   create-cluster:
 #     executor: aws-eks/python3
