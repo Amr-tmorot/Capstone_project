@@ -44,7 +44,10 @@ jobs:
               ./upload_docker.sh
 
   create-cluster:
-    executor: aws-eks/python3
+  #  executor: aws-eks/python3
+    docker:
+      - image: cimg/python:3.10
+
   #   parameters:
   #     cluster-name:
   #       description: |
