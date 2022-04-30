@@ -43,7 +43,7 @@ jobs:
               chmod +x ./upload_docker.sh
               ./upload_docker.sh
 
-  # create-cluster:
+   create-cluster:
   #   executor: aws-eks/python3
   #   parameters:
   #     cluster-name:
@@ -55,7 +55,7 @@ jobs:
   #         AWS region
   #       type: string
   #       default: "us-east-1"
-  #   steps:
+     steps:
   #     - checkout
   #     - aws-eks/install-aws-iam-authenticator:
   #         release-tag: ''
@@ -75,8 +75,8 @@ jobs:
   #           fi
   #           $SUDO mv eksctl_download/eksctl /usr/local/bin/
   #           rmdir eksctl_download
-  #     - aws-eks/create-cluster:
-  #         cluster-name: << parameters.cluster-name >>
+       - aws-eks/create-cluster:
+           cluster-name: udacity-capstone
   #         skip-kubectl-install: false
   #         aws-region: << parameters.aws-region >>
   #         verbose: 3
@@ -84,8 +84,8 @@ jobs:
   #         nodes-max: 2
   #         ssh-access: false
   #         ssh-public-key: ''
-  #         node-zones: us-east-1a
-  #         zones: us-east-1a,us-east-1b
+           node-zones: us-east-1a
+           zones: us-east-1a,us-east-1b
 # the "node-zones" and "zones" above is to fix the error: Resource handler returned message: "Cannot create cluster 'capstone-project' because us-east-1e, the targeted availability zone, does not currently have sufficient capacity to support the cluster.
           
 #   deploy-cluster:
@@ -133,10 +133,7 @@ workflows:
       #  - build-docker-image:
       #     requires:
       #       - lint-code
-       - aws-eks/create-cluster:
-          cluster-name: udacity-capstone
-          node-zones: us-east-1a
-          zones: us-east-1a,us-east-1b
+       - create-cluster
           # requires: 
           #   - build-docker-image
 #       - deploy-cluster:
