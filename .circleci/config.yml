@@ -133,7 +133,7 @@ workflows:
       #  - build-docker-image:
       #     requires:
       #       - lint-code
-       - create-cluster
+        - create-cluster
           # requires: 
           #   - build-docker-image
 #       - deploy-cluster:
