@@ -134,7 +134,7 @@ workflows:
       #     requires:
       #       - lint-code
        - aws-eks/create-cluster:
-          cluster-name: eks-demo-deployment
+          cluster-name: udacity-capstone
           # requires: 
           #   - build-docker-image
 #       - deploy-cluster:
