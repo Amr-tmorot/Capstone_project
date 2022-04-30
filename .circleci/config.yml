@@ -135,6 +135,8 @@ workflows:
       #       - lint-code
        - aws-eks/create-cluster:
           cluster-name: udacity-capstone
+          node-zones: us-east-1a
+          zones: us-east-1a,us-east-1b
           # requires: 
           #   - build-docker-image
 #       - deploy-cluster:
