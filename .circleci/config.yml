@@ -129,14 +129,14 @@ jobs:
 workflows:
    deployment:
      jobs:
-       - lint-code
-       - build-docker-image:
-          requires:
-            - lint-code
+      #  - lint-code
+      #  - build-docker-image:
+      #     requires:
+      #       - lint-code
        - aws-eks/create-cluster:
           cluster-name: eks-demo-deployment
-          requires: 
-            - build-docker-image
+          # requires: 
+          #   - build-docker-image
 #       - deploy-cluster:
 #           cluster-name: capstone-project
 #           requires: [create-cluster]
