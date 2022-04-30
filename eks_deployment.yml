@@ -2,14 +2,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone-project
+  name: flask-app
   labels:
-    app: capstone-project
+    app: flask-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: capstone-project
+      app: flask-app
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,14 +18,14 @@ spec:
   template:
     metadata:
       labels:
-        app: capstone-project
+        app: flask-app
     spec:
       volumes:
       - name: uploads
         emptyDir: {}
       containers:
-      - name: capstone-project
-        image: hazemzein/capstone-project.8654tag
+      - name: flask-app
+        image: tmorot/capstone:latest
         ports:
         - name: http
           containerPort: 8080
@@ -40,7 +40,7 @@ metadata:
   name: capstone
 spec:
   selector:
-    app: capstone
+    app: flask-app
   type: LoadBalancer
   ports:
   - protocol: TCP
